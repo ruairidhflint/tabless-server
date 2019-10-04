@@ -33,7 +33,20 @@ Router.get('/tab', Auth.restrictedRoute, (req, res) => {
 
 Router.post('/tab', Auth.restrictedRoute, Middleware.checkPostIsValid, (req, res) => {
   const { id } = req.decodedToken;
-  const { url, title, description, image } = req.body;
+  let { url, title, description, image } = req.body;
+
+  if(!title){
+    title = "No title available";
+  }
+
+  if(!description) {
+    description = "No description available";
+  }
+
+  if(!image) {
+    image = 'https://66.media.tumblr.com/a4a8a7b8bc61d3c461e480d6df4631c8/tumblr_ml9bpwdvZB1qeq9lso1_1280.jpg'
+  };
+
   const newTab = {
     url, title, description, image, user_id: id,
   };
