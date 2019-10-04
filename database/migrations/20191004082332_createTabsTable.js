@@ -6,7 +6,6 @@ exports.up = function (knex) {
         table.string('url')
           .notNullable();
         table.string('title')
-          .notNullable();
         table.blob('description');
         table.string('image');
         table.integer('user_id')
