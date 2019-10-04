@@ -3,8 +3,8 @@ const Errors = require('../errorHandling/errors');
 
 
 function checkPostIsValid(req, res, next) {
-  const { url, title, description, image } = req.body;
-  if (url && title && description && image) {
+  const { url } = req.body;
+  if (url) {
     next();
   } else {
     res.status(500).json({ message: Errors.allFieldsPresent });

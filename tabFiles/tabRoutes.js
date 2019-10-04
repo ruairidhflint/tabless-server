@@ -33,9 +33,9 @@ Router.get('/tab', Auth.restrictedRoute, (req, res) => {
 
 Router.post('/tab', Auth.restrictedRoute, Middleware.checkPostIsValid, (req, res) => {
   const { id } = req.decodedToken;
-  const { url, title, notes } = req.body;
+  const { url, title, description, image } = req.body;
   const newTab = {
-    url, title, notes, user_id: id,
+    url, title, description, image, user_id: id,
   };
   db.postNewTabByUserID(newTab)
     .then(() => {
